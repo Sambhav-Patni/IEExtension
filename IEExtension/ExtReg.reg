@@ -1,0 +1,26 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\CSTT Claim Search]
+@="C:\\SAM\\IEExtension\\CSTT_Claim_Search.htm"
+"Contexts"=hex:10,00,00,00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\CSTT Correlation Search]
+@="C:\\SAM\\IEExtension\\CSTT_Correlation_Search.htm"
+"Contexts"=hex:10,00,00,00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\CSTT Workitem Search]
+@="C:\\SAM\\IEExtension\\CSTT_Workitem_Search.htm"
+"Contexts"=hex:10,00,00,00
+
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\TFS ID Search]
+@="C:\\SAM\\IEExtension\\TFS_ID_Search.htm"
+"Contexts"=hex:10,00,00,00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\SalesForce Search]
+@="C:\\SAM\\IEExtension\\SalesForce_Search.htm"
+"Contexts"=hex:10,00,00,00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\TFS Text Search]
+@="C:\\SAM\\IEExtension\\TFS_Text_Search.htm"
+"Contexts"=hex:10,00,00,00

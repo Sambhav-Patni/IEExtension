@@ -1,0 +1,82 @@
+<!--
+Adds "TFS ID Search" context menu in Internet Explorer
+© Sambhav Patni - http://www.sambhav.0fees.net
+v1.0 Mar 31, 2016
+-->
+<script language="JavaScript">
+var parentwin = external.menuArguments;
+var selectedText = getSel();
+var str = new String(selectedText);
+
+var host = parentwin.window.document.domain;
+
+  if(0 < str.length)
+  {
+	if((host.indexOf("wwwca") > -1) || (host.indexOf("csttca") > -1)){
+		if(host.indexOf("wwwca-uat") > -1){
+			parentwin.window.open("http://csttca-uat.mitchell.com/Home/Results?claimNumber=" + str + "%", "_blank");
+		}
+		else{
+			parentwin.window.open("http://csttca-prod.mitchell.com/Home/Results?claimNumber=" + str + "%", "_blank");
+		}
+	}
+	else{
+		if(host.indexOf("-dev") > -1){
+			parentwin.window.open("http://cstt-dev.mitchell.com/Home/Results?claimNumber=" + str + "%", "_blank");
+		}
+		else if(host.indexOf("-qa") > -1){
+			parentwin.window.open("http://cstt-qa.mitchell.com/Home/Results?claimNumber=" + str + "%", "_blank");
+		}
+		else if(host.indexOf("-uat") > -1){
+			parentwin.window.open("http://cstt-uat.mitchell.com/Home/Results?claimNumber=" + str + "%", "_blank");
+		}
+		else {
+			parentwin.window.open("http://cstt-prod.mitchell.com/Home/Results?claimNumber=" + str + "%", "_blank");
+		}
+	}	
+  }
+  
+  
+function getSel(){
+  var w=parentwin.window,d=parentwin.document,gS='getSelection';
+  var selectedText;
+  var rv=(''+(w[gS]?w[gS]():d[gS]?d[gS]():d.selection.createRange().text)).replace(/(^\s+|\s+$)/g,'');
+  //parentwin.console.log("the selected text is in first try is:"+rv);
+  
+ if (rv=="") {
+   var allinput = parentwin.document.getElementsByTagName("input");  //I get an array of all input tags
+   var index;
+   var newsel;
+   var found="false";
+   for (index = 0; index < allinput.length; index++) {
+    parentwin.console.log("index: "+index);
+    newsel="";
+    parentwin.console.log("newsel= ");
+    try {
+      var ss = allinput[index].selectionStart;
+      parentwin.console.log("ss");
+      var se = allinput[index].selectionEnd;
+      parentwin.console.log("se");
+      if (typeof ss === "number" && typeof se === "number") {
+        newsel=allinput[index].value.substring(ss, se);
+        found=newsel;
+        if (newsel.length>0){
+        rv=newsel;
+        found="true";
+        allinput[index].selectionEnd=allinput[index].selectionStart;
+        newsel="";
+        }
+      }
+    }
+    catch(err){}
+    parentwin.console.log("input fields "+index+"/"+allinput.length+" fieldname:"+allinput[index].getAttribute("name")+" selection: "+newsel);
+    if (found=="true"){
+    index=allinput.length;
+    }
+   }
+   parentwin.console.log("found=:"+found);
+ }
+  return rv;
+}
+
+</script>
